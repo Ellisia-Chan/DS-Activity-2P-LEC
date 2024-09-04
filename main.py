@@ -28,7 +28,9 @@ class Program:
             "Exponent",
             "Floor Division"
             ]
-
+            
+        self.break_Main_Loop = False
+        
         self.Main()
     
     def Main(self) -> None:
@@ -86,8 +88,26 @@ class Program:
             
                 print(f"\nnum1: {num1} num2: {num2} Operator: {self.operators[operator_Num - 1]}")
                 print(f"Result: {result}\n")
-
-                print("")
+                
+                while True:
+                    
+                    print("[c] Continue\n[x] Exit")
+                    option = str(input("> "))
+                
+                    if option == "c":
+                        break
+                    elif option == "x":
+                        self.break_Main_Loop = True
+                        break
+                    else:
+                        print("Invalid Input. Try Again")
+                        time.sleep(1)
+                        continue
+                    
+                if self.break_Main_Loop == True:
+                    break
+                else:
+                    continue
 
             except ValueError:
                 print("Invalid Input. Try Again")
