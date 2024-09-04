@@ -1,5 +1,8 @@
 import time
 
+# Author: Villaber, Christian Jude N.
+# J2S
+
 class Calculation:
     def Addition(self, num1, num2):
         return num1 + num2
