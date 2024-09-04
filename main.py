@@ -33,6 +33,9 @@ class Program:
         
         self.Main()
     
+    def ClearConsole(self):
+        print("\033c", end="")
+    
     def Main(self) -> None:
         while True:
             try:
@@ -59,8 +62,11 @@ class Program:
                 if operator_Num > len(self.operators) or operator_Num < 0:
                     print("Operators Number is Out of Range. Try Again")
                     time.sleep(1)
+                    self.ClearConsole()
                     continue
-
+                
+                self.ClearConsole()
+                
                 if operator_Num == 1:
                     result = self.calculation.Addition(num1, num2)
                 elif operator_Num == 2:
@@ -72,9 +78,11 @@ class Program:
                     if num1 == 0 or num2 == 0:
                         print("Division by Zero is not Allowed. Try Again")
                         time.sleep(1)
+                        self.ClearConsole()      
                         continue
                     else:
                         result = self.calculation.Division(num1, num2)
+                        
                 elif operator_Num == 5:
                     result = self.calculation.Modulus(num1, num2)
                 elif operator_Num == 6:
@@ -84,17 +92,19 @@ class Program:
                 else:
                     print("Invalid Input. Try Again")
                     time.sleep(1)
+                    self.ClearConsole() 
                     continue
             
-                print(f"\nnum1: {num1} num2: {num2} Operator: {self.operators[operator_Num - 1]}")
+                print(f"\nnum 1: {num1}\nnum 2: {num2}\nOperator: {self.operators[operator_Num - 1]}\n")
                 print(f"Result: {result}\n")
                 
                 while True:
                     
                     print("[c] Continue\n[x] Exit")
-                    option = str(input("> "))
+                    option = str(input("> ")).lower()
                 
                     if option == "c":
+                        self.ClearConsole()
                         break
                     elif option == "x":
                         self.break_Main_Loop = True
@@ -102,6 +112,7 @@ class Program:
                     else:
                         print("Invalid Input. Try Again")
                         time.sleep(1)
+                        self.ClearConsole()
                         continue
                     
                 if self.break_Main_Loop == True:
@@ -112,6 +123,7 @@ class Program:
             except ValueError:
                 print("Invalid Input. Try Again")
                 time.sleep(1)
+                self.ClearConsole()
                 continue
 
 
